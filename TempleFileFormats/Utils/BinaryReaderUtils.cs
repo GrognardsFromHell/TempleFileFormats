@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TempleFileFormats.Common;
+using TempleFileFormats.Objects;
 
 namespace TempleFileFormats.Utils
 {
@@ -25,5 +27,39 @@ namespace TempleFileFormats.Utils
             return Encoding.Default.GetString(data);
         }
 
+        /// <summary>
+        /// Reads a 8-byte game location from the stream.
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="loc"></param>
+        public static Location ReadLocation(this BinaryReader reader)
+        {
+            var loc = new Location();
+            loc.X = reader.ReadInt32();
+            loc.Y = reader.ReadInt32();
+            loc.OffsetX = reader.ReadSingle();
+            loc.OffsetY = reader.ReadSingle();
+            return loc;
+        }
+
+        /// <summary>
+        /// Reads a ToEE object id from the reader.
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
+        public static ObjectGuid ReadObjectGuid(this BinaryReader reader)
+        {
+            var result = new ObjectGuid();
+
+            result.Type = reader.ReadInt16();
+            result.Foo = reader.ReadInt16();
+            result.Foo2 = reader.ReadInt32();
+            var guidData = reader.ReadBytes(16);
+            result.GUID = new Guid(guidData);
+
+            return result;
+        }
+
     }
+        
 }

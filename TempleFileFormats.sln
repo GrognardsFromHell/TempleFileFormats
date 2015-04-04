@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtractSaveGame", "ExtractS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompressSaveGame", "CompressSaveGame\CompressSaveGame.csproj", "{795F6040-0805-4A54-93BD-FA958473B507}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DumpSector", "DumpSectorLights\DumpSector.csproj", "{831DA75B-2945-4152-9F8C-78741DEBF023}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{795F6040-0805-4A54-93BD-FA958473B507}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{795F6040-0805-4A54-93BD-FA958473B507}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{795F6040-0805-4A54-93BD-FA958473B507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{831DA75B-2945-4152-9F8C-78741DEBF023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831DA75B-2945-4152-9F8C-78741DEBF023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831DA75B-2945-4152-9F8C-78741DEBF023}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831DA75B-2945-4152-9F8C-78741DEBF023}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +45,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5781AD8D-92A4-4CF2-BB20-27697F18BF3A} = {BCB37FF9-E2D7-4935-87A2-E42037B2BA55}
 		{795F6040-0805-4A54-93BD-FA958473B507} = {BCB37FF9-E2D7-4935-87A2-E42037B2BA55}
+		{831DA75B-2945-4152-9F8C-78741DEBF023} = {BCB37FF9-E2D7-4935-87A2-E42037B2BA55}
 	EndGlobalSection
 EndGlobal
