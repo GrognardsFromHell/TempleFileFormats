@@ -54,11 +54,11 @@ namespace TempleFileFormats.Maps
             // All of these seems to be old Arcanum leftovers
             if (placeholder >= 0xAA0001)
             {
-                ReadTileScripts(reader);
+                ReadTileScripts(reader, sector);
             }
             if (placeholder >= 0xAA0002)
             {
-                ReadSectorScripts(reader);
+                ReadSectorScripts(reader, sector);
             }
             if (placeholder >= 0xAA0003)
             {                
@@ -150,21 +150,40 @@ namespace TempleFileFormats.Maps
             }
         }
 
-        private void ReadTileScripts(BinaryReader reader)
+        private void ReadTileScripts(BinaryReader reader, Sector sector)
         {
             var count = reader.ReadInt32();
 
             for (int i = 0; i < count; ++i)
             {
-                var tileScript = reader.ReadBytes(24);
-                Console.WriteLine("Tile Script Read!");
+                var script = new TileScript()
+                {
+                    F1 = reader.ReadInt32(),
+                    F2 = reader.ReadInt32(),
+                    F3 = reader.ReadInt32(),
+                    F4 = reader.ReadInt32(),
+                    F5 = reader.ReadInt32(),
+                    F6 = reader.ReadInt32()
+                };
+
+                sector.TileScripts.Add(script);
             }
         }
 
 
-        private void ReadSectorScripts(BinaryReader reader)
+        private void ReadSectorScripts(BinaryReader reader, Sector sector)
         {
-            reader.ReadBytes(12);
+            var script = new ObjectScript()
+            {
+                F1 = reader.ReadInt32(),
+                F2 = reader.ReadInt32(),
+                ScriptId = reader.ReadInt32()
+            };
+
+            if (script.ScriptId != 0 || script.F1 != 0 || script.F2 != 0)
+            {
+                sector.SectorScript = script;
+            }
         }
 
         private void ReadObjects(BinaryReader reader, Sector sector)

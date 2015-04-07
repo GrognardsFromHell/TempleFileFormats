@@ -14,7 +14,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtractSaveGame", "ExtractS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompressSaveGame", "CompressSaveGame\CompressSaveGame.csproj", "{795F6040-0805-4A54-93BD-FA958473B507}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DumpSector", "DumpSectorLights\DumpSector.csproj", "{831DA75B-2945-4152-9F8C-78741DEBF023}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DumpSectors", "DumpSectors\DumpSectors.csproj", "{831DA75B-2945-4152-9F8C-78741DEBF023}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DumpMob", "DumpMob\DumpMob.csproj", "{90B50DEA-55A1-4294-91BA-F242DC212282}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DumpFontFace", "DumpFontFace\DumpFontFace.csproj", "{10BC3102-3CF2-4C7D-A765-780574037341}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{19A65335-E625-45BB-ABB6-B1354972F818}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildFontFace", "BuildFontFace\BuildFontFace.csproj", "{4724C050-5DDB-4FEF-8CCD-1574686CF3B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +51,18 @@ Global
 		{831DA75B-2945-4152-9F8C-78741DEBF023}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{831DA75B-2945-4152-9F8C-78741DEBF023}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{831DA75B-2945-4152-9F8C-78741DEBF023}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90B50DEA-55A1-4294-91BA-F242DC212282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90B50DEA-55A1-4294-91BA-F242DC212282}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90B50DEA-55A1-4294-91BA-F242DC212282}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90B50DEA-55A1-4294-91BA-F242DC212282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10BC3102-3CF2-4C7D-A765-780574037341}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10BC3102-3CF2-4C7D-A765-780574037341}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10BC3102-3CF2-4C7D-A765-780574037341}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10BC3102-3CF2-4C7D-A765-780574037341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4724C050-5DDB-4FEF-8CCD-1574686CF3B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4724C050-5DDB-4FEF-8CCD-1574686CF3B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4724C050-5DDB-4FEF-8CCD-1574686CF3B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4724C050-5DDB-4FEF-8CCD-1574686CF3B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,5 +71,8 @@ Global
 		{5781AD8D-92A4-4CF2-BB20-27697F18BF3A} = {BCB37FF9-E2D7-4935-87A2-E42037B2BA55}
 		{795F6040-0805-4A54-93BD-FA958473B507} = {BCB37FF9-E2D7-4935-87A2-E42037B2BA55}
 		{831DA75B-2945-4152-9F8C-78741DEBF023} = {BCB37FF9-E2D7-4935-87A2-E42037B2BA55}
+		{90B50DEA-55A1-4294-91BA-F242DC212282} = {BCB37FF9-E2D7-4935-87A2-E42037B2BA55}
+		{10BC3102-3CF2-4C7D-A765-780574037341} = {BCB37FF9-E2D7-4935-87A2-E42037B2BA55}
+		{4724C050-5DDB-4FEF-8CCD-1574686CF3B4} = {BCB37FF9-E2D7-4935-87A2-E42037B2BA55}
 	EndGlobalSection
 EndGlobal

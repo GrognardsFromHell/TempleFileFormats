@@ -23,4 +23,17 @@ namespace TempleFileFormats.Objects
         }
 
     }
+
+    public class ObjectScript
+    {
+        public int F1 { get; set; }
+        public int F2 { get; set; }
+        public int ScriptId { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("({0}, {1}, {2})", F1, F2, ScriptId);
+        }
+    }
+
 }

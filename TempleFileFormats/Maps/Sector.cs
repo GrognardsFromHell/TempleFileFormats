@@ -17,11 +17,16 @@ namespace TempleFileFormats.Maps
 
         public List<GameObject> Objects { get; private set; }
 
+        public ObjectScript SectorScript { get; set; }
+
+        public List<TileScript> TileScripts { get; private set; }
+
         public Sector()
         {
             Lights = new List<SectorLight>();
             Tiles = new SectorTile[4096];
             Objects = new List<GameObject>();
+            TileScripts = new List<TileScript>();
         }        
 
         public static uint GetSectorLoc(int x, int y)
@@ -56,7 +61,7 @@ namespace TempleFileFormats.Maps
     public class SectorLightParticles {
         public int ParticleSystemHash { get; set; } // Hash of the particle system name. Can be 0 to disable particles.
         public int ParticleSystemHandle { get; set; } // Should be 0. Is set at runtime
-    };
+    }
 
     public class SectorLightAtNight {
         public int field0 { get; set; }
@@ -67,6 +72,21 @@ namespace TempleFileFormats.Maps
         public int field14 { get; set; }
         public int field18 { get; set; }
         public SectorLightParticles Particles { get; set; }
-    };
-   
+    }
+
+    public class TileScript
+    {
+        public int F1 { get; set; }
+        public int F2 { get; set; }
+        public int F3 { get; set; }
+        public int F4 { get; set; }
+        public int F5 { get; set; }
+        public int F6 { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("{0} {1} {2} {3} {4} {5}", F1, F2, F3, F4, F5, F6);
+        }
+    }
+
 }

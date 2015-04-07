@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -65,7 +67,7 @@ namespace TempleFileFormats.Objects
             return obj;
         }
 
-        private object ReadFieldValue(ObjectFieldDef fieldDef, BinaryReader reader)
+        private static object ReadFieldValue(ObjectFieldDef fieldDef, BinaryReader reader)
         {
             switch (fieldDef.FieldType)
             {
@@ -90,14 +92,108 @@ namespace TempleFileFormats.Objects
                 case ObjectFieldType.Unk2Array:
                 case ObjectFieldType.ObjArray:
                 case ObjectFieldType.SpellArray:
-                    break;
+                    return ReadFieldValueArray(fieldDef, reader);
                 case ObjectFieldType.String:
                     break;
                 case ObjectFieldType.Obj:
-                    break;
+                    if (reader.ReadByte() == 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return reader.ReadObjectGuid();
+                    }
             }
 
             throw new InvalidOperationException("Could not handle field type " + fieldDef.FieldType);
         }
+
+        private static IList ReadFieldValueArray(ObjectFieldDef fieldDef, BinaryReader reader)
+        {
+            if (reader.ReadByte() == 0)
+            {
+                return null;
+            }
+
+            var elementSize = reader.ReadInt32();
+            var elementCount = reader.ReadInt32();
+            var headerUnk = reader.ReadInt32();
+
+            var payloadSize = elementCount * elementSize;
+
+            IList result = null;
+
+            if (payloadSize > 0)
+            {
+                switch (fieldDef.FieldType)
+                {
+                    case ObjectFieldType.AbilityArray:
+                    case ObjectFieldType.Int32Array:
+                        Debug.Assert(elementSize == 4);
+                        result = ReadArrayValues(reader, elementCount, r => r.ReadInt32());
+                        break;
+                    case ObjectFieldType.Int64Array:
+                        Debug.Assert(elementSize == 8);
+                        result = ReadArrayValues(reader, elementCount, r => r.ReadInt64());
+                        break;
+                    case ObjectFieldType.ScriptArray:
+                        Debug.Assert(elementSize == 12);
+                        result = ReadArrayValues(reader, elementCount, r => {
+                            return new ObjectScript()
+                            {
+                                F1 = r.ReadInt32(),
+                                F2 = r.ReadInt32(),
+                                ScriptId = r.ReadInt32()
+                            };
+                        });
+                        break;
+                    case ObjectFieldType.ObjArray:
+                        Debug.Assert(elementSize == 0x18);
+                        result = ReadArrayValues(reader, elementCount, r => r.ReadObjectGuid());
+                        break;
+                    default:                        
+                        throw new InvalidDataException("Unsupported array type: " + fieldDef.FieldType);
+                }
+
+                var count = reader.ReadInt32();
+                var actualIdx = 0;
+                var elementIdx = 0;
+                for (var i = 0; i < count; ++i) 
+                {
+                    uint bitmask = reader.ReadUInt32();
+                    for (var j = 0; j < 32; ++j)
+                    {
+                        uint mask = (uint) 1 << j;
+                        if ((bitmask & mask) == mask)
+                        {
+                            while (elementIdx < actualIdx)
+                            {
+                                result.Insert(elementIdx, null);
+                                elementIdx++;
+                            }
+                            elementIdx++;
+                        }
+                        actualIdx++;
+                    }
+                }
+
+                // Check for sparse arrays
+                
+            }
+
+            return result;
+        }
+
+        private static List<T> ReadArrayValues<T>(BinaryReader reader, int elementCount, Func<BinaryReader, T> readFunc)
+        {
+            List<T> array = new List<T>();
+            for (int i = 0; i < elementCount; ++i)
+            {
+                array.Add(readFunc.Invoke(reader));
+            }
+            return array;
+        }
+
     }
 }
