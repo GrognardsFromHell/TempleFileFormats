@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildFontFace", "BuildFontF
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TioPack", "TioPack\TioPack.vcxproj", "{DBEF21D8-A4F8-4800-AC9C-A6F98AB63432}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TioUnpack", "TioUnpack\TioUnpack.vcxproj", "{7E21F207-5ECD-41C4-9AB4-4D04A2A3C36B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,16 @@ Global
 		{DBEF21D8-A4F8-4800-AC9C-A6F98AB63432}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{DBEF21D8-A4F8-4800-AC9C-A6F98AB63432}.Release|Win32.ActiveCfg = Release|Win32
 		{DBEF21D8-A4F8-4800-AC9C-A6F98AB63432}.Release|Win32.Build.0 = Release|Win32
+		{7E21F207-5ECD-41C4-9AB4-4D04A2A3C36B}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{7E21F207-5ECD-41C4-9AB4-4D04A2A3C36B}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{7E21F207-5ECD-41C4-9AB4-4D04A2A3C36B}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{7E21F207-5ECD-41C4-9AB4-4D04A2A3C36B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7E21F207-5ECD-41C4-9AB4-4D04A2A3C36B}.Debug|Win32.Build.0 = Debug|Win32
+		{7E21F207-5ECD-41C4-9AB4-4D04A2A3C36B}.Release|Any CPU.ActiveCfg = Release|Win32
+		{7E21F207-5ECD-41C4-9AB4-4D04A2A3C36B}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{7E21F207-5ECD-41C4-9AB4-4D04A2A3C36B}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{7E21F207-5ECD-41C4-9AB4-4D04A2A3C36B}.Release|Win32.ActiveCfg = Release|Win32
+		{7E21F207-5ECD-41C4-9AB4-4D04A2A3C36B}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -133,5 +145,6 @@ Global
 		{10BC3102-3CF2-4C7D-A765-780574037341} = {BCB37FF9-E2D7-4935-87A2-E42037B2BA55}
 		{4724C050-5DDB-4FEF-8CCD-1574686CF3B4} = {BCB37FF9-E2D7-4935-87A2-E42037B2BA55}
 		{DBEF21D8-A4F8-4800-AC9C-A6F98AB63432} = {BCB37FF9-E2D7-4935-87A2-E42037B2BA55}
+		{7E21F207-5ECD-41C4-9AB4-4D04A2A3C36B} = {BCB37FF9-E2D7-4935-87A2-E42037B2BA55}
 	EndGlobalSection
 EndGlobal
