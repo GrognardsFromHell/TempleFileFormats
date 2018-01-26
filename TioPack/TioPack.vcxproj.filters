@@ -3,4 +3,8 @@
   <ItemGroup>
     <ClCompile Include="TioPack.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="zconf.h" />
+    <ClInclude Include="zlib.h" />
+  </ItemGroup>
 </Project>
